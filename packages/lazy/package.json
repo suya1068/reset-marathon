@@ -1,0 +1,30 @@
+{
+    "name": "lazy",
+    "version": "0.0.1",
+    "description": "lazyload for performance or animation",
+    "keywords": [
+        "lazyload",
+        "IntersectionObserver"
+    ],
+    "author": "jinseok.choi <metocherry@gmail.com>",
+    "homepage": "https://github.com/suya1068/reset-marathon/tree/master/packages/lazy#readme",
+    "license": "MIT",
+    "main": "lib/lazy.js",
+    "directories": {
+        "lib": "lib",
+        "test": "test"
+    },
+    "files": [
+        "lib"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/suya1068/reset-marathon.git"
+    },
+    "scripts": {
+        "test": "echo \"Error: run tests from root\" && exit 1"
+    },
+    "bugs": {
+        "url": "https://github.com/suya1068/reset-marathon/issues"
+    }
+}

@@ -1,0 +1,15 @@
+# Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Modules
+**/node_modules/
+
+# Log
+*.log
+
+# Cache
+.jest

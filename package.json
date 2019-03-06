@@ -1,0 +1,23 @@
+{
+  "name": "reset-marathon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suya1068/reset-marathon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suya1068/reset-marathon/issues"
+  },
+  "homepage": "https://github.com/suya1068/reset-marathon#readme",
+  "devDependencies": {
+    "lerna": "^3.13.0"
+  }
+}
