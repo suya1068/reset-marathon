@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>LazyLoad Test</title>
+    <style>
+      .lazy-box {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        margin-bottom: 20px;
+        border: 1px solid #e1e1e1;
+      }
+      .lazy-box > img {
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="lazyLoad_container">
+      <div class="lazy-box">
+        <img data-src="./images/test_01.jpg" />
+      </div>
+      <div class="lazy-box">
+        <img data-src="./images/test_02.jpg" />
+      </div>
+      <div class="lazy-box">
+        <img data-src="./images/test_03.jpg" />
+      </div>
+      <div class="lazy-box">
+        <img data-src="./images/test_04.jpg" />
+      </div>
+      <div class="lazy-box">
+        <img data-src="./images/test_05.jpg" />
+      </div>
+      <div class="lazy-box">
+        <img data-src="./images/test_06.jpg" />
+      </div>
+      <div class="lazy-box">
+        <img data-src="./images/test_07.jpg" />
+      </div>
+      <div class="lazy-box">
+        <img data-src="./images/test_08.jpg" />
+      </div>
+      <div class="lazy-box">
+        <img data-src="./images/test_09.jpg" />
+      </div>
+      <div class="lazy-box">
+        <img data-src="./images/test_10.jpg" />
+      </div>
+      <div class="lazy-box">
+        <img data-src="./images/test_11.jpg" />
+      </div>
+      <div class="lazy-box">
+        <img data-src="./images/test_12.jpg" />
+      </div>
+    </div>
+    <script type="text/javascript" src="./lib/lazy.js"></script>
+    <script>
+      const lazy = new LazyLoad({
+        root: document.getElementById("lazyLoad_container")
+      });
+
+      lazy.create().auto();
+      // .on("enter", () => {
+      //   console.log("this", this);
+      //   const targetSet = document.getElementById("lazyLoad_container").querySelectorAll("img");
+      //   targetSet.forEach(element => {
+      //     this._observer.observe(element);
+      //   });
+      //   console.log("enter");
+      // })
+      // .on("leave", () => {
+      //   console.log("leave");
+      // });
+      /**
+       * lazy
+          .create({
+            ...properties
+          })
+          .on("enter", () => void)
+          .on("leave", () => void)
+          .on("finish", () => void)
+          .on("error", () => void);
+       */
+    </script>
+  </body>
+</html>
