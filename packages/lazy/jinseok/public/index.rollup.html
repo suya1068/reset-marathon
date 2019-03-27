@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Lazy With Rollup</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .root {
+        position: relative;
+        display: flex;
+      }
+
+      .column {
+        flex: 1 1 33%;
+        max-width: 33%;
+      }
+
+      .image-box {
+        position: relative;
+        margin: 0.25rem;
+        overflow: hidden;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 0.25rem;
+      }
+
+      .image-box img {
+        min-width: 100%;
+        opacity: 1;
+        transition: opacity 2s ease-in-out;
+      }
+
+      .image-box img.preview {
+        filter: blur(8px);
+        /* filter: blur(2vw);
+        transform: scale(1.05); */
+      }
+
+      .image-box img.reveal {
+        left: 0;
+        top: 0;
+        will-change: transform, opacity;
+        animation: reveal 1s ease-out;
+      }
+
+      @keyframes reveal {
+        0% {
+          transform: scale(1.05);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="root">
+      <div class="column">
+        <div class="image-box">
+          <img
+            class="preview"
+            data-src="./images/original/iu_01.jpg"
+            src="./images/tiny/iu_01.jpg"
+          />
+        </div>
+        <div class="image-box">
+          <img
+            class="preview"
+            data-src="./images/original/iu_02.jpg"
+            src="./images/tiny/iu_02.jpg"
+          />
+        </div>
+        <div class="image-box">
+          <img
+            class="preview"
+            data-src="./images/original/iu_03.jpg"
+            src="./images/tiny/iu_03.jpg"
+          />
+        </div>
+        <div class="image-box">
+          <img
+            class="preview"
+            data-src="./images/original/iu_04.jpg"
+            src="./images/tiny/iu_04.jpg"
+          />
+        </div>
+        <div class="image-box">
+          <img
+            class="preview"
+            data-src="./images/original/iu_05.jpg"
+            src="./images/tiny/iu_05.jpg"
+          />
+        </div>
+        <div class="image-box">
+          <img
+            class="preview"
+            data-src="./images/original/iu_06.jpg"
+            src="./images/tiny/iu_06.jpg"
+          />
+        </div>
+        <div class="image-box">
+          <img
+            class="preview"
+            data-src="./images/original/iu_07.jpg"
+            src="./images/tiny/iu_07.jpg"
+          />
+        </div>
+        <div class="image-box">
+          <img
+            class="preview"
+            data-src="./images/original/iu_08.jpg"
+            src="./images/tiny/iu_08.jpg"
+          />
+        </div>
+        <div class="image-box">
+          <img
+            class="preview"
+            data-src="./images/original/iu_01.jpg"
+            src="./images/tiny/iu_01.jpg"
+          />
+        </div>
+        <div class="image-box">
+          <img
+            class="preview"
+            data-src="./images/original/iu_02.jpg"
+            src="./images/tiny/iu_02.jpg"
+          />
+        </div>
+        <div class="image-box">
+          <img
+            class="preview"
+            data-src="./images/original/iu_03.jpg"
+            src="./images/tiny/iu_03.jpg"
+          />
+        </div>
+        <div class="image-box">
+          <img
+            class="preview"
+            data-src="./images/original/iu_04.jpg"
+            src="./images/tiny/iu_04.jpg"
+          />
+        </div>
+        <div class="image-box">
+          <img
+            class="preview"
+            data-src="./images/original/iu_05.jpg"
+            src="./images/tiny/iu_05.jpg"
+          />
+        </div>
+        <div class="image-box">
+          <img
+            class="preview"
+            data-src="./images/original/iu_06.jpg"
+            src="./images/tiny/iu_06.jpg"
+          />
+        </div>
+        <div class="image-box">
+          <img
+            class="preview"
+            data-src="./images/original/iu_07.jpg"
+            src="./images/tiny/iu_07.jpg"
+          />
+        </div>
+        <div class="image-box">
+          <img
+            class="preview"
+            data-src="./images/original/iu_08.jpg"
+            src="./images/tiny/iu_08.jpg"
+          />
+        </div>
+      </div>
+    </div>
+    <script src="./lazy.rollup.js"></script>
+    <script>
+
+      // function Lazyload() {
+      //   this.hooks = {};
+
+      //   this.io = new IntersectionObserver(
+      //     (entries, observer) => {
+      //       console.log(entries);
+      //       entries.forEach((entry, index) => {
+      //         console.log(entry.target, entry.isIntersecting);
+      //         if (this.isIntersecting(entry)) {
+      //           this.setEntityData(entry.target, true);
+      //           this.hooks.enter(entry, observer);
+      //         } else if (this.hasReveal(entry.target)) {
+      //           this.setEntityData(entry.target, false);
+      //           this.hooks.leave(entry, observer);
+      //         } else {
+      //           this.setEntityData(entry.target, false);
+      //         }
+      //       });
+      //     },
+      //     { threshold: 0 }
+      //   );
+
+      //   Array.from(document.querySelectorAll("img")).forEach(box => {
+      //     this.io.observe(box);
+      //   });
+      // }
+
+      // Lazyload.prototype.on = function on(event_name, event_iteratee) {
+      //   this.hooks[event_name] = event_iteratee;
+      //   return this;
+      // };
+
+      // Lazyload.prototype.isIntersecting = function isIntersecting(entry) {
+      //   return entry.isIntersecting || entry.intersectionRatio > 0;
+      // };
+
+      // Lazyload.prototype.setEntityData = function setEntityData(element, is_processed = false) {
+      //   element.setAttribute("data-is-reveal", is_processed);
+      // };
+
+      // Lazyload.prototype.hasReveal = function hasReveal(element) {
+      //   return element.dataset.isReveal !== undefined;
+      // };
+
+      // Lazyload.prototype.isReveal = function isReveal(element) {
+      //   return Boolean(element.dataset.isReveal) === true;
+      // };
+
+      // function lazyload() {}
+      // lazyload.create = function create() {
+      //   return new Lazyload();
+      // };
+
+      // document.addEventListener("DOMContentLoaded", () => {
+      //   lazyload
+      //     .create()
+      //     .on("enter", (entry, observer) => {
+      //       console.log("[event::enter]");
+      //       const img = entry.target;
+      //       img.src = img.dataset.src;
+      //       img.classList.remove("preview");
+      //       img.classList.add("reveal");
+      //       // observer.unobserve(img);
+      //     })
+      //     .on("leave", (entry, observer) => {
+      //       console.log("[event::leave]");
+      //     });
+      // });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        RMLazy
+          .create({
+            root: document.body,
+            threshold: 0
+          })
+          .observe("img")
+          .subscribe({
+            enter: () => console.log("%c[enter] ", "color: blue;"),
+            leave: () => console.log("%c[leave] ", "color: blue;"),
+            error: () => console.log("%c[error] ", "color: blue;")
+          });
+      });
+    </script>
+  </body>
+</html>
